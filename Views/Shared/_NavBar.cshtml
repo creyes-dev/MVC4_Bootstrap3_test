@@ -1,0 +1,35 @@
+﻿
+@helper ActiveItem(string actionName, string controllerName, string areaName)
+{
+    if (ViewContext.RouteData.Values["action"].ToString() == actionName &&
+    ViewContext.RouteData.Values["controller"].ToString() == controllerName &&
+    (ViewContext.RouteData.DataTokens["area"] == null || ViewContext.RouteData.DataTokens["area"].ToString() == areaName))
+    {
+        @:active
+    }
+}
+
+    <nav id="main_navbar" class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Bootstrap theme</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+                <li class="@ActiveItem("Index", "Home", null)">@Html.ActionLink("Home", "Index", "Home")</li>
+                <li class="@ActiveItem("About", "Home", null)">@Html.ActionLink("About", "About", "Home")</li>
+                <li class="@ActiveItem("Contact", "Home", null)">@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <li class="@ActiveItem("Test", "Home", null)">@Html.ActionLink("Test", "Test", "Home")</li>
+                <li class="@ActiveItem("BootstrapStructureTest", "Home", null)">@Html.ActionLink("BootstrapStructureTest","BootstrapStructureTest","Home")</li>
+                <li class="@ActiveItem("Index", "jqueryui", null)">@Html.ActionLink("Jquery-ui test", "Index","jqueryui")</li>
+            </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+

@@ -1,0 +1,247 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - Mi aplicación ASP.NET MVC</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/Content/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/Content/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/Content/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="~/Content/ico/apple-touch-icon-57-precomposed.png">
+        <link href="~/Content/ico/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+        @Styles.Render("~/Content/bootstrap/css")
+        @Styles.Render("~/Content/css")
+        @Styles.Render("~/Content/themes/base/css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+      <style>
+          #resizable { width: 150px; height: 150px; padding: 0.5em; }
+          #resizable h3 { text-align: center; margin: 0; }
+          .ui-resizable-helper { border: 1px dotted gray; }
+
+            #feedback { font-size: 1.4em; }
+  #selectable .ui-selecting { background: #FECA40; }
+  #selectable .ui-selected { background: #F39814; color: white; }
+  #selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+  #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
+
+
+      </style>    
+
+      <script>
+
+            $(function () {
+                $("#resizable").resizable({
+                    animate: true
+                });
+            });
+
+            $(function () {
+                $("#sortable").sortable({
+                    revert: true
+                });
+                $("#draggable").draggable({
+                    connectToSortable: "#sortable",
+                    helper: "clone",
+                    revert: "invalid"
+                });
+                $("ul, li").disableSelection();
+            });
+
+            $(function () {
+                $("#draggable2").draggable();
+                $("#droppable").droppable({
+                    drop: function (event, ui) {
+                        $(this)
+                          .addClass("ui-state-highlight")
+                          .find("p")
+                            .html("Dropped!");
+                    }
+                });
+            });
+
+            $(function () {
+                $("#selectable").selectable();
+            });
+
+            $(function () {
+                $("#accordion").accordion({
+                    heightStyle: "content"
+                });
+            });
+
+            $(function () {
+                $("#datepicker").datepicker();
+            });
+
+            $(function () {
+                $("#dialog").dialog({
+                    autoOpen: false,
+                    show: {
+                        effect: "blind",
+                        duration: 1000
+                    },
+                    hide: {
+                        effect: "explode",
+                        duration: 1000
+                    }
+                });
+
+                $("#opener").on("click", function () {
+                    $("#dialog").dialog("open");
+                });
+            });
+
+            $(function () {
+                $("#tabs").tabs();
+            });
+
+            $(function () {
+                $(document).tooltip();
+            });
+
+        </script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Resizable</h1>
+        </div>
+        <div id="resizable" class="ui-widget-content">
+            <h3 class="ui-widget-header">Animate</h3>
+        </div>
+
+        <div class="page-header">
+            <h1>Draggable (sortable)</h1>
+        </div>
+    <ul>
+      <li id="draggable" class="ui-state-highlight">Drag me down</li>
+    </ul>
+ 
+    <ul id="sortable">
+      <li class="ui-state-default">Item 1</li>
+      <li class="ui-state-default">Item 2</li>
+      <li class="ui-state-default">Item 3</li>
+      <li class="ui-state-default">Item 4</li>
+      <li class="ui-state-default">Item 5</li>
+    </ul>
+
+        <div class="page-header">
+            <h1>Droppable</h1>
+        </div>
+        <div id="draggable2" class="ui-widget-content">
+          <p>Drag me to my target</p>
+        </div>
+        <div id="droppable" class="ui-widget-header">
+          <p>Drop here</p>
+        </div>
+
+        <div class="page-header">
+            <h1>Selectable</h1>
+        </div>
+        <ol id="selectable">
+          <li class="ui-widget-content">Item 1</li>
+          <li class="ui-widget-content">Item 2</li>
+          <li class="ui-widget-content">Item 3</li>
+          <li class="ui-widget-content">Item 4</li>
+          <li class="ui-widget-content">Item 5</li>
+          <li class="ui-widget-content">Item 6</li>
+          <li class="ui-widget-content">Item 7</li>
+    </ol>
+
+        <div class="page-header">
+            <h1>accordion</h1>
+        </div>
+        <div id="accordion">
+          <h3>Section 1</h3>
+          <div>
+            <p>Mauris mauris ante, blandit et, ultrices a, susceros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
+          </div>
+          <h3>Section 2</h3>
+          <div>
+            <p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In suscipit faucibus urna. </p>
+          </div>
+          <h3>Section 3</h3>
+          <div>
+            <p>Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis. Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui. </p>
+            <ul>
+              <li>List item</li>
+              <li>List item</li>
+              <li>List item</li>
+              <li>List item</li>
+              <li>List item</li>
+              <li>List item</li>
+              <li>List item</li>
+            </ul>
+          </div>
+        </div>
+
+
+        <div class="page-header">
+            <h1>datepicker</h1>
+        </div>
+        <p>Date: <input type="text" id="datepicker"></p>
+
+        <div class="page-header">
+            <h1>dialog</h1>
+        </div>
+        <div id="dialog" title="Basic dialog">
+          <p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+        </div>
+        <button id="opener">Open Dialog</button>
+
+        <div class="page-header">
+            <h1>tabs</h1>
+        </div>
+         <div id="tabs">
+          <ul>
+            <li><a href="#tabs-1">Nunc tincidunt</a></li>
+            <li><a href="#tabs-2">Proin dolor</a></li>
+            <li><a href="#tabs-3">Aenean lacinia</a></li>
+          </ul>
+          <div id="tabs-1">
+            <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
+          </div>
+          <div id="tabs-2">
+            <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+          </div>
+          <div id="tabs-3">
+            <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
+            <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+          </div>
+        </div>
+
+        <div class="page-header">
+            <h1>tooltip</h1>
+        </div>
+
+        <p><a href="#" title="That&apos;s what this widget is">Tooltips</a> can be attached to any element. When you hover
+        the element with your mouse, the title attribute is displayed in a little box next to the element, just like a native tooltip.</p>
+        <p>But as it's not a native tooltip, it can be styled. Any themes built with
+        <a href="http://jqueryui.com/themeroller/" title="ThemeRoller: jQuery UI&apos;s theme builder application">ThemeRoller</a>
+        will also style tooltips accordingly.</p>
+        <p>Tooltips are also useful for form elements, to show some additional information in the context of each field.</p>
+        <p><label for="age">Your age:</label><input id="age" title="We ask for your age only for statistical purposes."></p>
+        <p>Hover the field to see the tooltip.</p>
+
+        
+            <hr />
+            <div class="footer">
+                <p>&copy; Company 2013</p>
+            </div>
+    </div>
+        
+        
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/jqueryui")
+</body>
+</html>
